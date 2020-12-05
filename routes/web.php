@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HelloController;
+use App\Http\Middleware\HelloMiddleware;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +13,9 @@ use App\Http\Controllers\HelloController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Route::get('/hello', [HelloController::class, 'index'])
+// ->middleware('hello');
 
 Route::get('/', function () {
     return view('welcome');
