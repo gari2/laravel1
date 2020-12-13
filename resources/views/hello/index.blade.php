@@ -1,7 +1,15 @@
 @extends('layouts.helloapp')
 <style>
+    body {font-size:16px; color: #999; margin: 5px;}
+    h1{font-size:50px; text-align:right; color:#f6f6f6;
+    margin:-20px 0px -30px 0px; letter-spacing: -4px;}
+    ul{font-size:12px;}
+    hr{margin: 25px 100px; border-top: 1px dashed #ddd;}
+    .menutitle {font-size: 14px; font-weight:bold; margin: 0px;}
+    .content {margin:10px;}
+    .footer {text-align: right; font-size: 10px; margin:10px; border-bottom:solid 1px #ccc; color:#ccc;}
     .pagination { font-size:10px; }
-    .pagination li { display: inline-block}
+    .pagination li { display: inline-block }
     tr th a:link { color:white; }
     tr th a:visited {color: white; }
     tr th a:hover {color:white; }
@@ -20,14 +28,6 @@
 <p>これは、<middleware>google.com</middleware>へのリンクです。</p>
 <p>これは、<middleware>yahoo.co.jp</middleware>へのリンクです。</p>
 
-    @component('components.message')
-        @slot('msg_title')
-            CAUTION!
-        @endslot
-        @slot('msg_content')
-            これはメッセージの表示です。
-        @endslot
-    @endcomponent
     <table>
         <tr>
             <th><a href="/hello?sort=name">Name</a></th>
@@ -42,7 +42,8 @@
             </tr>
         @endforeach
     </table>
-    {{ $items->appends(['sort' => $sort])->links() }}
+    <br>
+{{ $items->appends(['sort' => $sort])->links('pagination::bootstrap-4') }}
 @endsection
 
 @section('footer')
