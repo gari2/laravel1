@@ -5,6 +5,7 @@ use App\Http\Controllers\HelloController;
 use App\Http\Controllers\PersonController;
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\RestappController;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\HelloMiddleware;
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,8 @@ Route::post('/hello/edit', [HelloController::class, 'update']);
 Route::get('/hello/del', [HelloController::class, 'del']);
 Route::post('/hello/del', [HelloController::class, 'remove']);
 Route::get('/hello/show', [HelloController::class, 'show']);
+Route::post('/hello/auth', [HelloController::class, 'postAuth']);
+Route::get('/hello/auth', [HelloController::class, 'getAuth']);
 
 Route::get('/person', [PersonController::class, 'index']);
 Route::get('/person/find', [PersonController::class, 'find']);
@@ -65,3 +68,8 @@ Route::get('/hello/other', [HelloController::class, 'other']);
 // Route::get('/hello', function(){
 //     return view('hello.index');
 // });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

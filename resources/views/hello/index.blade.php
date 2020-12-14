@@ -23,6 +23,11 @@
 @endsection
 
 @section('content')
+@if (Auth::check())
+<p>USER: {{$user->name . ' (' . $user->email . ')'}}</p>
+@else
+<p>ログインしていません。(<a href="/login">ログイン</a>|<a href="/register">登録</a>)</p>
+@endif
     <p>ここが本文のコンテンツです。</p>
     <p>必要なだけ記述できます。</p>
 <p>これは、<middleware>google.com</middleware>へのリンクです。</p>
